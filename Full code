@@ -1,1 +1,131 @@
+                                                  TIC - TAC - TOE GAME
+from IPython.display import clear_output
+#Display board
+def display(n_lst):
+    clear_output()
+    print('TIC - TAC - TOE')
+    print('|',n_lst[7],'|',n_lst[8],'|',n_lst[9],'|')
+    print('|',n_lst[4],'|',n_lst[5],'|',n_lst[6],'|')
+    print('|',n_lst[1],'|',n_lst[2],'|',n_lst[3],'|')
+
+
+#check board for dummy input
+n_lst = ['Dummy',1,2,3,4,5,6,7,8,9]
+display(n_lst)
+output:
+⭐ ⭐ Tic-Tac-Toe ⭐ ⭐ 
+     | 7 | 8 | 9 |
+     | 4 | 5 | 6 |
+     | 1 | 2 | 3 |
+
+
+#check board for x input
+n_lst = [' ']*10
+for i in range(9):
+    temp = int(input('Enter the input:'))
+    n_lst[temp] = 'X'
+    display(n_lst)
+output :
+Enter the input:3
+⭐ ⭐ Tic-Tac-Toe ⭐ ⭐ 
+     |  |  |  |
+     |  |  |  |
+     |  |  | x|
+Enter the input:4
+⭐ ⭐ Tic-Tac-Toe ⭐ ⭐ 
+     |  |  |  |
+     | x |  |  |
+     |  |  | x |
+
+
+ #Check board for alternate 'X' and 'O' inputs
+n_lst = [' ']*10
+for i in range(9):
+    temp = int(input('Enter the input:'))
+    if(i%2==0):
+        n_lst[temp] = 'X'
+    else:
+        n_lst[temp] = 'O'
+    display(n_lst)
+output :
+⭐ ⭐ Tic-Tac-Toe ⭐ ⭐ 
+     | x | o | x |
+     | o |  | o |
+     |  | o | x |
+
+
+# Check Winning Condition
+# winning cases - 1,2,3 - 4,5,6 - 7,8,9 - 1,4,7 - 2,5,8 - 3,6,9 - 1,5,9 - 3,5,7
+def check_winning_condition(mark , n_lst):
+    if(((n_lst[1]==mark) and (n_lst[2]==mark) and (n_lst[3]==mark)) or
+    ((n_lst[4]==mark) and (n_lst[5]==mark) and (n_lst[6]==mark)) or
+    ((n_lst[7]==mark) and (n_lst[8]==mark) and (n_lst[9]==mark)) or
+    ((n_lst[1]==mark) and (n_lst[4]==mark) and (n_lst[7]==mark)) or
+    ((n_lst[2]==mark) and (n_lst[5]==mark) and (n_lst[8]==mark)) or
+    ((n_lst[3]==mark) and (n_lst[6]==mark) and (n_lst[9]==mark)) or
+    ((n_lst[1]==mark) and (n_lst[5]==mark) and (n_lst[9]==mark)) or
+    ((n_lst[3]==mark) and (n_lst[5]==mark) and (n_lst[7]==mark))):
+        return 1
+    else:
+        return 0 
+
+
+#Play and check for Player1 and Player2
+#Winning and Match Tie status is displayed at the end
+n_lst = [' ']*10
+for i in range(9):
+    temp = int(input('Enter the input:'))
+    if(i%2==0):
+        n_lst[temp] = 'X'
+        mark = 'X'
+        temp1 = check_winning_condition(mark ,n_lst)
+    else:
+        n_lst[temp] = 'O'
+        mark = 'O'
+        temp1 = check_winning_condtion(mark,n_lst)
+    display(n_lst)
+    if(temp1 == 1):
+        if(i%2==0):
+            print(' Player 1st win')
+        else:
+            print('Player 2nd win')
+    else:
+        print('There is a tie')
+
+
+#player 1 has the right to choose a specific mark x or o
+while(True):
+    n_lst = [' ']*10
+    display(n_lst)
+    player_1 = input("player-1 : enter your choice  - 'X','O'")
+    if(player_1.upper()=='X'):
+        player_1 = 'X'
+        player_2 = 'O'
+    else:
+        player_1 = 'O'
+        player_2 = 'X'
+for i in range(9):
+    temp = int(input('Enter the input:'))
+    if(i%2==0):
+        n_lst[temp] = player_1
+        mark = player_1
+        temp1 = check_winning_condition(mark ,n_lst)
+    else:
+        n_lst[temp] = player_2
+        mark = player_2
+        temp1 = check_winning_condtion(mark,n_lst)
+    display(n_lst)
+    if(temp1 == 1):
+        if(i%2==0):
+            print(' Player 1st win')
+        else:
+            print('Player 2nd win')
+    else:
+        print('There is a tie')
+    replay_status = input('do you want to play again ? - enter yes or no')
+    if(replay-status == 'NO'):
+        break
+
+
+
 
