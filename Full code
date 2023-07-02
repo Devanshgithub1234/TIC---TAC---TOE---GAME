@@ -34,8 +34,8 @@ Enter the input:3
 Enter the input:4
 ⭐ ⭐ Tic-Tac-Toe ⭐ ⭐ 
      |  |  |  |
-     | x |  |  |
-     |  |  | x |
+     | x|  |  |
+     |  |  | x|
 
 
  #Check board for alternate 'X' and 'O' inputs
@@ -50,12 +50,13 @@ for i in range(9):
 output :
 ⭐ ⭐ Tic-Tac-Toe ⭐ ⭐ 
      | x | o | x |
-     | o |  | o |
-     |  | o | x |
+     | o |   | o |
+     |   | o | x |
 
 
 # Check Winning Condition
 # winning cases - 1,2,3 - 4,5,6 - 7,8,9 - 1,4,7 - 2,5,8 - 3,6,9 - 1,5,9 - 3,5,7
+
 def check_winning_condition(mark , n_lst):
     if(((n_lst[1]==mark) and (n_lst[2]==mark) and (n_lst[3]==mark)) or
     ((n_lst[4]==mark) and (n_lst[5]==mark) and (n_lst[6]==mark)) or
@@ -72,6 +73,7 @@ def check_winning_condition(mark , n_lst):
 
 #Play and check for Player1 and Player2
 #Winning and Match Tie status is displayed at the end
+
 n_lst = [' ']*10
 for i in range(9):
     temp = int(input('Enter the input:'))
@@ -94,6 +96,7 @@ for i in range(9):
 
 
 #player 1 has the right to choose a specific mark x or o
+
 while(True):
     n_lst = [' ']*10
     display(n_lst)
@@ -123,9 +126,73 @@ for i in range(9):
     else:
         print('There is a tie')
     replay_status = input('do you want to play again ? - enter yes or no')
-    if(replay-status == 'NO'):
+    if(replay-status == 'yes'):
+        clear_output()
+    else:
+         clear_output()
+         break
+
+
+#Added names to players
+#Added the game play statistics
+#Total number of matches played, winning count of player1, winning count of player2, number of match ties
+
+player1_name = input('Enter Player1 name: ')
+player2_name = input('Enter Player2 name: ')
+winning_count_p1 = 0
+winning_count_p2 = 0
+tie_count = 0
+while(True):
+    n_lst = [' '] * 10
+    display(n_lst)
+    player1_mark = input(str(player1_name) + ", please enter your choice! - 'X' or 'O': ")
+    if(player1_mark.upper() == 'X'):
+        player1_mark = 'X'
+        player2_mark = 'O'
+    else:
+        player1_mark = 'O'
+        player2_mark = 'X'
+    for i in range(9):
+        if(i%2==0):
+            #temp = enter_valid_input(n_lst)
+            temp = int(input(str(player1_name) + ', enter the input: '))
+            n_lst[temp] = player1_mark
+            mark = player1_mark
+            temp1 = check_winning_condition(mark, n_lst)
+        else:
+            #temp = enter_valid_input(n_lst)
+            temp = int(input(str(player2_name) + ', enter the input: '))
+            n_lst[temp] = player2_mark
+            mark = player2_mark
+            temp1 = check_winning_condition(mark, n_lst)
+        display(n_lst)
+        if(temp1 == 1):
+            break
+    if(temp1 == 1):
+        if(i%2 == 0):
+            print('Hurrey! ' + str(player1_name) + ' won!')
+            winning_count_p1 = winning_count_p1 + 1
+        else:
+            print('Hurrey! ' + str(player2_name) + ' won!')
+            winning_count_p2 = winning_count_p2 + 1
+    else:
+        print('There is a tie.')
+        tie_count = tie_count + 1
+    replay_status = input('Do you want to play again? - Enter Yes or No: ')
+    if(replay_status == 'Yes'):
+        clear_output()
+    else:
+        clear_output()
+        print('Total matches played = ' + str(int(winning_count_p1 + winning_count_p2 + tie_count)))
+        print('Number of matches won by ' + str(player1_name) + ' = ' +str(winning_count_p1))
+        print('Number of matches won by ' + str(player2_name) + ' = ' +str(winning_count_p2))
+        print('Tie count = ' + str(tie_count))
         break
 
-
+output : 
+        total matches played : 4
+        no of matches won by Rishabh : 3
+        no of matches won by rahul : 3
+        tie count = 0
 
 
