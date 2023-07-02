@@ -1,4 +1,5 @@
                                                   TIC - TAC - TOE GAME
+
 from IPython.display import clear_output
 #Display board
 def display(n_lst):
@@ -9,7 +10,7 @@ def display(n_lst):
     print('|',n_lst[1],'|',n_lst[2],'|',n_lst[3],'|')
 
 
-#check board for dummy input
+                                         #check board for dummy input
 n_lst = ['Dummy',1,2,3,4,5,6,7,8,9]
 display(n_lst)
 output:
@@ -18,8 +19,7 @@ output:
      | 4 | 5 | 6 |
      | 1 | 2 | 3 |
 
-
-#check board for x input
+                                          #check board for x input
 n_lst = [' ']*10
 for i in range(9):
     temp = int(input('Enter the input:'))
@@ -38,7 +38,7 @@ Enter the input:4
      |  |  | x|
 
 
- #Check board for alternate 'X' and 'O' inputs
+                                     #Check board for alternate 'X' and 'O' inputs
 n_lst = [' ']*10
 for i in range(9):
     temp = int(input('Enter the input:'))
@@ -54,8 +54,8 @@ output :
      |   | o | x |
 
 
-# Check Winning Condition
-# winning cases - 1,2,3 - 4,5,6 - 7,8,9 - 1,4,7 - 2,5,8 - 3,6,9 - 1,5,9 - 3,5,7
+                                               # Check Winning Condition
+                              # winning cases - 1,2,3 - 4,5,6 - 7,8,9 - 1,4,7 - 2,5,8 - 3,6,9 - 1,5,9 - 3,5,7
 
 def check_winning_condition(mark , n_lst):
     if(((n_lst[1]==mark) and (n_lst[2]==mark) and (n_lst[3]==mark)) or
@@ -71,8 +71,8 @@ def check_winning_condition(mark , n_lst):
         return 0 
 
 
-#Play and check for Player1 and Player2
-#Winning and Match Tie status is displayed at the end
+                                           #Play and check for Player1 and Player2
+                                     #Winning and Match Tie status is displayed at the end
 
 n_lst = [' ']*10
 for i in range(9):
@@ -95,7 +95,7 @@ for i in range(9):
         print('There is a tie')
 
 
-#player 1 has the right to choose a specific mark x or o
+                               #player 1 has the right to choose a specific mark x or o
 
 while(True):
     n_lst = [' ']*10
@@ -133,9 +133,10 @@ for i in range(9):
          break
 
 
-#Added names to players
-#Added the game play statistics
-#Total number of matches played, winning count of player1, winning count of player2, number of match ties
+                                              #Added names to players
+                                          #Added the game play statistics
+                 #Total number of matches played, winning count of player1, winning count of player2, number of match ties
+
 
 player1_name = input('Enter Player1 name: ')
 player2_name = input('Enter Player2 name: ')
